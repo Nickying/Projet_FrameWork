@@ -1,0 +1,7 @@
+rest_homepage:
+    path:     /
+    defaults: { _controller: RestBundle:Default:index }
+    
+rest_test:
+    path: /test
+    defaults: { _controller: RestBundle:Rest:index }
