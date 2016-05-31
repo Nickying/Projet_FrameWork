@@ -27,6 +27,19 @@
       });
       System.import('app/main')
             .then(null, console.error.bind(console));
+			
+		$http({
+			url: '../Symfony/web/app_dev.php/test',
+			method: 'POST'
+		  }).then(function successCallback(response) {
+			// this callback will be called asynchronously
+			// when the response is available
+			console.log(response)
+		  }, function errorCallback(response) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+			
+		  });
     </script>
 
   </head>

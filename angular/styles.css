@@ -6,3 +6,11 @@ body{
 	margin-top:0;
 	text-align:center;
 }
+#menu .button {
+	float:right;
+}
+h1, .button{
+		display:inline;
+		margin:0;
+		font-size:24px;
+}
