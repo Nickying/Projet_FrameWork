@@ -28,9 +28,9 @@
       System.import('app/main')
             .then(null, console.error.bind(console));
 			
-		/*$http({
+		$http({
 			url: '../Symfony/web/app_dev.php/test',
-			method: 'POST'
+			method: 'GET'
 		  }).then(function successCallback(response) {
 			// this callback will be called asynchronously
 			// when the response is available
@@ -39,9 +39,9 @@
 			// called asynchronously if an error occurs
 			// or server returns response with an error status.
 			
-		  });*/
+		  });
 		  
-		  var app = angular.module('myApp', []);
+		  /*var app = angular.module('myApp', []);
 			app.controller('myCtrl', function($scope, $http) {
 		$http({
 			method : "POST",
@@ -50,8 +50,7 @@
 			$scope.test = response.data;
 			}, function myError(response) {
 			$scope.test = response.statusText;
-		});
-	});
+		});*/
     </script>
 
   </head>
@@ -59,7 +58,7 @@
   <body>
     <my-accueil>Loading...</my-accueil>
 	<!--<my-compte>Loading...</my-compte>-->
-	<my-connecter>Loading...</my-connecter>
+	<!--<my-connecter>Loading...</my-connecter>
 	
 	<div ng-app="myApp" ng-controller="myCtrl"> 
 
@@ -68,7 +67,7 @@
 	<h1>{{test}}</h1>
 	
 
-	</div>
+	</div>-->
   </body>
 
 </html>
