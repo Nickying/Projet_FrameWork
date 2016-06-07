@@ -2,6 +2,18 @@ rest_homepage:
     path:     /
     defaults: { _controller: RestBundle:Default:index }
     
+rest_add:
+    path: /adduser
+    defaults: { _controller: RestBundle:Rest:adduser }
+    
+rest_pseudo:
+    path: /pseudo
+    defaults: { _controller: RestBundle:Rest:testpseudo }
+
 rest_test:
     path: /test
-    defaults: { _controller: RestBundle:Rest:index }
+    defaults: { _controller: RestBundle:Rest:adduser }
+
+rest_test2:
+    path: /test2
+    defaults: { _controller: RestBundle:Rest:index}

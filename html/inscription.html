@@ -22,7 +22,7 @@
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="#"> Cr�er un Compte </a></li>
+						<li class="active"><a href="#"> Créer un Compte </a></li>
 						<li><a href="connexion.html"> Se Connecter </a></li>
 					</ul>
 				</div>
@@ -32,28 +32,28 @@
 		<!-- debut -->
 		<div class="row">
 			<div class="col-lg-offset-2 col-lg-8">
-			<form method="POST">
+			<form id="form" method="POST">
 				<fieldset>
 					<legend> Inscription </legend>
 					<div class="form-group">
 						<label for="pseudo">Pseudonyme</label>
-						<input type="text" class="form-control" id="pseudo" placeholder="Pseudonyme" required>
+						<input type="text" class="form-control" id="pseudo" placeholder="Pseudonyme" name="pseudo" required>
 					</div>
 					<div class="form-group">
 						<label for="nom">Nom</label>
-						<input type="text" class="form-control" id="nom" placeholder="Nom" required>
+						<input type="text" class="form-control" name="nom" id="nom" placeholder="Nom" required>
 					</div>
 					<div class="form-group">
-						<label for="prenom">Pr�nom</label>
-						<input type="text" class="form-control" id="prenom" placeholder="Pr�nom" required>
+						<label for="prenom">Pr�nom</label>
+						<input type="text" class="form-control" id="prenom" name="prenom" placeholder="Pr�nom" required>
 					</div>
 					<div class="form-group">
 						<label for="email">E-mail</label>
-						<input type="email" class="form-control" id="email" placeholder="E-mail" required>
+						<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
 					</div>
 					<div class="form-group">
 						<label for="mdp">Mot de passe</label>
-						<input type="password" class="form-control" id="mdp" placeholder="Mot de passe" required>
+						<input type="password" class="form-control" id="mdp" name="mdp" placeholder="Mot de passe" required>
 					</div>
 					<div class="form-group">
 						<label for="cmdp">Confirmer mot de passe</label>
@@ -65,7 +65,14 @@
 		
 		<script>
 			$(document).ready(function() {
-				var password = document.getElementById("mdp")
+				
+                                
+                                $('#form').on('submit', function(e) {
+                                    e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
+
+                                    var $this = $(this); // L'objet jQuery du formulaire
+
+                                   var password = document.getElementById("mdp")
 			  , confirm_password = document.getElementById("cmdp");
 
 				function validatePassword(){
@@ -78,6 +85,38 @@
 
 				password.onchange = validatePassword;
 				confirm_password.onkeyup = validatePassword;
+                                   
+
+                                    
+                                        // Envoi de la requête HTTP en mode asynchrone
+                                            $.ajax({
+                                                url: "../Symfony/web/app_dev.php/pseudo", // Le nom du fichier indiqué dans le formulaire
+                                                type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                                                data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                                                success: function(data) { // Je récupère la réponse du fichier PHP
+                                                    if (data[0].existe)
+                                                    {  
+                                                        
+                                                    $.ajax({
+                                                    url: "../Symfony/web/app_dev.php/test", // Le nom du fichier indiqué dans le formulaire
+                                                    type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                                                    data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                                                    success: function(html) { // Je récupère la réponse du fichier PHP
+                                                        alert(html.existe);
+                                                        
+                                                    }
+                                                    });
+                                                }
+                                                else
+                                                {
+                                                    alert("pseudo existe déja");
+                                                    
+                                                }
+                                                }
+                                            });
+                                });
+                              
+                
 			});
 		</script>
 	</body>
