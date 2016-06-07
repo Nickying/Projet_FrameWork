@@ -11,46 +11,47 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AccueilComponent;
+    var ConnecterComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            AccueilComponent = (function () {
-                function AccueilComponent() {
+            ConnecterComponent = (function () {
+                function ConnecterComponent() {
                 }
-                AccueilComponent = __decorate([
+                ConnecterComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-accueil',
+                        selector: 'my-connecter',
                         template: '<div id="menu">' +
                             '<h1>iDeas</h1>' +
                             '<div class="button">' +
-                            '<button name="btnCreerCompte">Créer un compte</button>' +
+                            '<button name="btnCreerCompte">Cr�er un compte</button>' +
                             '<button name="btnConnecter">Se connecter</button>' +
                             '</div>' +
                             '</div>' +
-                            '<p>Plate Forme de partage d\'idées</p>' +
-                            '<div class="row">' +
-                            '<h3> Les plus populaires </h3>' +
-                            '<div id="populaire">' +
-                            '<p> Idée 1 </p>' +
-                            '<p> Idée 3 </p>' +
+                            '<h3> Se connecter </h3>' +
+                            '<div id="connexion">' +
+                            '<form method="POST">' +
+                            '<div class="form-group">' +
+                            '<label for="email">E-mail</label>' +
+                            '<input type="email" class="form-control" id="email" placeholder="E-mail" required>' +
                             '</div>' +
-                            '<div class="row">' +
-                            '<h3> Les plus récentes </h3>' +
-                            '<div id="recent">' +
-                            '<p> Idée 345 </p>' +
-                            '<p> Idée 346 </p>' +
+                            '<div class="form-group">' +
+                            '<label for="mdp">Mot de passe</label>' +
+                            '<input type="password" class="form-control" id="mdp" placeholder="Mot de passe" required>' +
+                            '</div>' +
+                            '<input type="submit" value="Se connecter">' +
+                            '</form>' +
                             '</div>'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], AccueilComponent);
-                return AccueilComponent;
+                ], ConnecterComponent);
+                return ConnecterComponent;
             }());
-            exports_1("AccueilComponent", AccueilComponent);
+            exports_1("ConnecterComponent", ConnecterComponent);
         }
     }
 });
-//# sourceMappingURL=accueil.component.js.map
+//# sourceMappingURL=connecter.component.js.map

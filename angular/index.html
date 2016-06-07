@@ -28,7 +28,7 @@
       System.import('app/main')
             .then(null, console.error.bind(console));
 			
-		$http({
+		/*$http({
 			url: '../Symfony/web/app_dev.php/test',
 			method: 'POST'
 		  }).then(function successCallback(response) {
@@ -39,13 +39,36 @@
 			// called asynchronously if an error occurs
 			// or server returns response with an error status.
 			
-		  });
+		  });*/
+		  
+		  var app = angular.module('myApp', []);
+			app.controller('myCtrl', function($scope, $http) {
+		$http({
+			method : "POST",
+			url : "../Symfony/web/app_dev.php/test"
+			}).then(function mySucces(response) {
+			$scope.test = response.data;
+			}, function myError(response) {
+			$scope.test = response.statusText;
+		});
+	});
     </script>
 
   </head>
 
   <body>
     <my-accueil>Loading...</my-accueil>
+	<!--<my-compte>Loading...</my-compte>-->
+	<my-connecter>Loading...</my-connecter>
+	
+	<div ng-app="myApp" ng-controller="myCtrl"> 
+
+	<p>Test :</p>
+
+	<h1>{{test}}</h1>
+	
+
+	</div>
   </body>
 
 </html>
